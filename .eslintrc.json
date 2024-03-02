@@ -1,3 +1,25 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "max-len": ["warn", {
+      "code": 120,
+      "ignoreComments": true,
+      "ignoreStrings": true,
+      "ignoreTemplateLiterals": true
+    }],
+    "semi": ["warn", "always"],
+    "no-unused-vars": "warn",
+    "no-extra-semi": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "jsx-quotes": ["error", "prefer-double"],
+    "no-mixed-spaces-and-tabs": "error",
+    "comma-dangle": ["warn", "always-multiline"],
+    "object-curly-spacing": ["warn", "always", {
+      "objectsInObjects": false,
+      "arraysInObjects": false
+    }],
+    "prefer-const": "warn",
+    "eqeqeq": "error",
+    "require-await": "error"
+  }
 }

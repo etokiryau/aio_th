@@ -1,0 +1,43 @@
+{
+	"React Functional Component": {
+        "prefix": "rfc",
+        "body": [
+            "import { FC } from \"react\";",
+            "import { useTranslation } from \"next-i18next\";",
+            "",
+            "import styles from \"./${TM_FILENAME_BASE/^(.)(.*)/${1:/downcase}${2}/}.module.scss\";",
+            "",
+            "const ${TM_FILENAME_BASE}: FC = () => {",
+            "    const { t } = useTranslation('');",
+            "",
+            "    return (",
+            "        <div className={styles.${TM_FILENAME_BASE/^(.)(.*)/${1:/downcase}${2}/}}>",
+            "           ${1}"
+            "        </div>",
+            "    );",
+            "};",
+            "",
+            "export default ${TM_FILENAME_BASE};"
+        ],
+        "description": "React Functional Component Template"
+    },
+    "Module SCSS": {
+        "prefix": "mscss",
+        "body": [
+            "@use '@/styles/_variables.module' as vars;",
+            "@use '@/styles/_mixins.module' as mixins;",
+            "",
+            ".${TM_FILENAME_BASE/([a-zA-Z]+)\\.module/$1/} {",
+            "${1}",
+            "}"
+        ],
+        "description": "Module SCSS Template"
+    },
+    "Use dispatch": {
+        "prefix": "usedispatch",
+        "body": [
+            "const dispatch = useTypedDispatch();",
+        ],
+        "description": "Dispatch function"
+    },
+}

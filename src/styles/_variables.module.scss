@@ -1,0 +1,42 @@
+$primaryFontSize: 18px;
+$primaryFontFamily: 'Roboto', 'system-ui', 'Segoe UI', Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+$buttonFontFamily: 'Nunito', 'system-ui', 'Segoe UI', Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+
+$primaryColor: #3d3d3d;
+$primaryColor02: #D8D8D8;
+$primaryColor08: #8b8b8b;
+
+$secondaryColor: #ffffff;
+$additionalColor: #FB5B0D;
+$blueColor: #725AC1;
+$blueColor04: #c7bde7;
+
+$greenStatusColor: #0CD808;
+$yellowStatusColor: #FFB800;
+$blueStatusColor: #0A6CFF;
+$redStatusColor: #DD0E01;
+
+$greenStatusColor06: #88e57f;
+
+$headerFontSize: 64px;
+$subHeaderFontSize: 32px;
+$buttonFontSize: 18px;
+
+$primaryBorder: solid 1px $primaryColor;
+$borderRadius: 24px;
+$boxShadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+
+$primaryMobileFontSize: 16px;
+$headerMobileFontSize: 40px;
+$subHeaderMobileFontSize: 24px;
+$mobileBorderRadius: 8px;
+
+:export {
+    primaryColor: $primaryColor;
+    additionalColor: $additionalColor;
+    secondaryColor: $secondaryColor;
+    greenStatusColor: $greenStatusColor;
+    redStatusColor: $redStatusColor;
+    blueColor: $blueColor;
+    primaryFontFamily: $primaryFontFamily;
+}

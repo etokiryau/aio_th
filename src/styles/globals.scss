@@ -1,0 +1,279 @@
+@import './variables.module.scss';
+
+// Fonts
+@font-face {
+  font-family: "Roboto";
+  src: url("../../public/fonts/Roboto-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../../public/fonts/Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../../public/fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../../public/fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../../public/fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../../public/fonts/Nunito-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+// Default styles clearing
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-weight: 300;
+  padding: 0;
+  margin: 0;
+}
+
+*::selection {
+  background-color: $blueColor04;
+}
+
+html {
+  scroll-snap-type: y proximity;
+}
+
+body {
+  font-size: $primaryFontSize;
+  background: $secondaryColor;
+  font-family: $primaryFontFamily;
+  color: $primaryColor;
+  scrollbar-width: 10px;
+  scrollbar-color: $primaryColor;
+  height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: none;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: $primaryColor;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: none;
+}
+
+h1, h2 {
+  font-size: $headerFontSize;
+}
+
+h3, h4, h5, h6 {
+  font-size: $primaryFontSize;
+}
+
+a, a:visited, a:hover {
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+}
+
+/* Form */
+input, textarea, button, select {
+  font-family: inherit;
+  font-size: inherit;
+  // color: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button, input[type="submit"] {
+  display: inline-block;
+  box-shadow: none;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+button:disabled, input:disabled, textarea:disabled {
+  cursor: auto;
+}
+
+input:focus, input:active,
+button:focus, button:active {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, button, input[type="checkbox"], input[type="radio"], input[type="range"] {
+  &:focus-visible {
+    outline: solid 2.5px $blueColor;
+    outline-offset: 2px;
+  } 
+}
+
+select {
+  cursor: pointer;
+}
+
+legend {
+  display: block;
+}
+
+// APS icons
+#toolbar-sectionTool {
+  display: block !important;
+}
+
+.icon-fitToView {
+  background-image: url('/forgeIcons/fitToView.svg');
+}
+
+.icon-hoveredFitToView {
+  background-image: url('/forgeIcons/hoveredFitToView.svg');
+}
+
+.icon-pan {
+  background-image: url('/forgeIcons/pan.svg');
+}
+
+.icon-hoveredPan {
+  background-image: url('/forgeIcons/hoveredPan.svg');
+}
+
+.icon-fullScreen {
+  background-image: url('/forgeIcons/fullScreen.svg');
+}
+
+.icon-hoveredFullScreen {
+  background-image: url('/forgeIcons/hoveredFullScreen.svg');
+}
+
+.icon-properties {
+  background-image: url('/forgeIcons/properties.svg');
+}
+
+.icon-hoveredProperties {
+  background-image: url('/forgeIcons/hoveredProperties.svg');
+}
+
+.icon-sections {
+  background-image: url('/forgeIcons/sections.svg');
+}
+
+.icon-hoveredSections {
+  background-image: url('/forgeIcons/hoveredSections.svg');
+}
+
+.icon-documents {
+  background-image: url('/forgeIcons/documents.svg');
+}
+
+.icon-hoveredDocuments {
+  background-image: url('/forgeIcons/hoveredDocuments.svg');
+}
+
+.icon-units {
+  background-image: url('/forgeIcons/units.svg');
+}
+
+.icon-hoveredUnits {
+  background-image: url('/forgeIcons/hoveredUnits.svg');
+}
+
+.icon-fitToView, .icon-pan, .icon-fullScreen, .icon-properties, .icon-sections, .icon-documents, 
+.icon-units, .icon-hoveredFitToView, .icon-hoveredDocuments, .icon-hoveredProperties, 
+.icon-hoveredSections, .icon-hoveredUnits, .icon-hoveredPan, .icon-hoveredFullScreen {
+  top: -1px;
+}
+
+.icon-meters, .icon-millimeters, .icon-inches, .icon-feet {
+  transform: translateY(-5px);
+}
+
+.icon-meters::after {
+  content: 'm';
+  font-size: 16px;
+}
+
+.icon-millimeters::after {
+  content: 'mm';
+  font-size: 16px;
+}
+
+.icon-inches::after {
+  content: 'inch';
+  font-size: 16px;
+}
+
+.icon-feet::after {
+  content: 'feet';
+  font-size: 16px;
+}
+
+.propertyPanel::-webkit-resizer {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  h1, h2 {
+    font-size: $headerMobileFontSize;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: $primaryMobileFontSize;
+  }
+
+  h3, h4, h5, h6 {
+    font-size: $primaryMobileFontSize;
+  }
+}
