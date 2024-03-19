@@ -1,7 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 
 import Header from "./header/Header";
-// import Footer from "./footer/Footer";
 import Meta from "@/components/seo/Meta";
 import type { TMeta } from "@/components/seo/meta.types";
 
@@ -29,7 +28,6 @@ const MainLayout: FC<PropsWithChildren<IProps>> = (props) => {
             <main className={styles.main}>
                 {children}
             </main>
-            {/* {footer && <Footer />} */}
         </Meta>
     );
 };
