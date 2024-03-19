@@ -1,0 +1,13 @@
+.main {
+    margin: 0 auto;
+    padding: 87px 0 50px;
+    width: min(100%, 1440px);
+
+  min-height: calc(100vh - 160px);
+}
+
+@media (max-width: 768px) {
+    .main {
+        padding: 65px 0 50px;
+    }
+}

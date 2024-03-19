@@ -1,0 +1,66 @@
+@use '@/styles/_variables.module' as vars;
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: vars.$primaryColor, $alpha: .1);
+    text-align: center;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: .3s ease;
+        opacity: 0;
+        transform: scale(.9);
+    }
+
+    .contain {
+        object-fit: contain;
+    }
+
+    &__spinner {
+        position: absolute;
+        top: calc(50% - 25px);
+        left: calc(50% - 25px);
+        width: 50px;
+        height: 50px;
+        border-top: 3px solid vars.$primaryColor;
+        border-right: 3px solid transparent;
+        border-radius: 50%;
+        animation: rotation .8s linear infinite;
+    }
+}
+
+.loaded {
+    background-color: unset;
+
+    img {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+@media (max-width: 768px) {
+    .wrapper {    
+        &__spinner {
+            top: calc(50% - 15px);
+            left: calc(50% - 15px);
+            width: 30px;
+            height: 30px;
+            border-top: 1px solid vars.$primaryColor;
+            border-right: 1px solid transparent;
+        }
+    }
+}

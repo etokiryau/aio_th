@@ -1,0 +1,54 @@
+@use '@/styles/_variables.module.scss' as vars ;
+@use '@/styles/_mixins.module.scss' as mixins;
+
+.header {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(calc(100% - 20px), 1440px);
+    background-color: rgba($color: vars.$secondaryColor, $alpha: .5);
+    box-shadow: 0 10px 40px #0000001a;
+    backdrop-filter: blur(5px);
+    border-radius: 64px;
+    transform: translateX(-50%);
+    z-index: 1000;
+
+    &__link {
+        align-items: center;
+        gap: 20px;
+
+        svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        p {
+            font-size: 24px;
+        }
+    }
+
+    p {
+        margin-top: 3px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 12px 20px;
+
+        &__link {
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            p {
+                font-size: 18px;
+            }
+        }
+    }
+}

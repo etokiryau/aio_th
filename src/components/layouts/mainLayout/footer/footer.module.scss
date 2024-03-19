@@ -1,0 +1,98 @@
+@use '@/styles/_variables.module' as vars;
+@use '@/styles/_mixins.module' as mixins;
+
+.footer {
+    margin: 0 auto;
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    width: min(95%, 1340px);
+    border-top: solid .4px rgba($color: vars.$primaryColor, $alpha: .3);
+
+    svg {
+        fill: vars.$primaryColor;
+    }
+
+    &__left {
+        align-self: self-end;
+        min-width: fit-content;
+    }
+
+    &__right {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex: 1;
+        max-width: 700px;
+
+        &_block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            // max-width: 200px;
+
+            p {
+                margin-bottom: 16px;
+                font-weight: 400;
+            }
+
+            div {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            &:first-child, &:nth-child(2) {
+                a {
+                    @include mixins.hoveredText;
+                    width: fit-content;
+                }
+            }
+        }
+    } 
+}
+
+@media (max-width: 1024px) {
+    .footer {
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        gap: 50px;
+    
+        &__left {
+            align-self: flex-start;
+            min-width: fit-content;
+        }
+
+        &__right {
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 32px 10px;
+
+        &__right {
+            gap: 30px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        &__right {
+    
+            &_block {
+    
+                p {
+                    margin-bottom: 0px;
+                    font-weight: 400;
+                }
+            }
+        }
+
+    }
+}

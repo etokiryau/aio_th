@@ -1,0 +1,172 @@
+@use '@/styles/_variables.module' as vars;
+@use '@/styles/_mixins.module' as mixins;
+
+.slider {
+    position: relative;
+    height: 100%;
+
+    img {
+        -webkit-user-drag: none;
+    }
+
+    &__wrapper {
+        @include mixins.noScrollbar;
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: flex;
+        gap: 8.5%;
+        height: 100%;
+        scroll-snap-type: x mandatory;
+
+        &::before {
+            content: '';
+            min-width: 10.25%;
+            height: calc(100% - 42px);
+            background-color: rgba($color: vars.$primaryColor, $alpha: .1);
+            border-radius: 0 vars.$borderRadius vars.$borderRadius 0;
+        }
+
+        &::after {
+            content: '';
+            min-width: 10.25%;
+            height: calc(100% - 42px);
+            background-color: rgba($color: vars.$primaryColor, $alpha: .1);
+            border-radius: vars.$borderRadius 0 0 vars.$borderRadius;
+        }
+    }
+
+    &__slideWrapper {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        border-radius: vars.$borderRadius;
+        cursor: zoom-in;
+
+        &:focus-visible {
+            outline-offset: -5px;
+        }
+    }
+
+    &__slide {
+        min-width: 62.5%;
+        height: calc(100% - 42px);
+        transition: .9s ease;
+        // user-select: none;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+
+        p {
+            margin: 18px 0 0 10px;
+            text-align: center;
+        }
+    }
+
+    .inActive {
+        opacity: .4;
+    }
+
+    &__rightChange, &__leftChange {
+        @include mixins.flexCenter;
+        position: absolute;
+        top: calc((100% - 42px) / 2);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: vars.$primaryColor;
+        transition: box-shadow .3s ease;
+        z-index: 15;
+
+        &:hover {
+            box-shadow: 0px 0px 0px 8px rgba($color: vars.$primaryColor, $alpha: .2);
+        }
+    }
+
+    &__rightChange {
+        left: 85.5%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__leftChange {
+        right: 85.5%;
+        transform: translate(50%, -50%) rotate(180deg);
+    }
+
+    svg {
+        stroke: vars.$secondaryColor;
+        fill: vars.$secondaryColor;
+        transform: scale(.8) translateX(2px);
+    }
+
+    &__dots {
+        display: none
+    }
+}
+
+@media (max-width: 768px) {
+    .slider {
+        height: calc(100% - 26px);
+
+        .smallWrapper {
+            gap: 8.5%;
+
+            &::before, &::after {
+                min-width: 10.25%;
+                height: 100%;
+            }
+        }
+
+        .inActive {
+            opacity: unset;
+        }
+
+        &__slideWrapper {
+            border-radius: vars.$mobileBorderRadius;
+        }
+
+        &__wrapper {
+            &::before {
+                border-radius: 0 vars.$mobileBorderRadius vars.$mobileBorderRadius 0;
+            }
+    
+            &::after {
+                border-radius: vars.$mobileBorderRadius 0 0 vars.$mobileBorderRadius;
+            }
+
+            &_blank {
+                display: none;
+            }
+        }
+
+        &__slideSmall {
+            min-width: 62.5%;
+            height: 100%;
+
+            p {
+                display: none;
+            }
+        }
+
+        &__rightChange, &__leftChange {
+            display: none
+        }
+
+        &__dots {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+
+            span {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                border: vars.$primaryBorder;
+                transition: .3s ease;
+            }
+
+            .activeDot {
+                background-color: vars.$primaryColor;
+            }
+        }
+    }
+}

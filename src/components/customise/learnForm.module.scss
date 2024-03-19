@@ -1,0 +1,89 @@
+@use '@/styles/_variables.module' as vars;
+@use '@/styles/_mixins.module' as mixins;
+
+.learn {
+    @include mixins.flexCenter;
+    position: fixed;
+    inset: 0;
+    color: vars.$secondaryColor;
+    background-color: rgba($color: vars.$secondaryColor, $alpha: .7);
+    z-index: 1000;
+    transform: scale(.9);
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s ease;    
+
+    &__wrapper {
+        @include mixins.noScrollbar;
+        overflow-y: auto;
+        margin-inline: 20px;
+        padding: 24px 32px;
+        width: min(100%, 540px);
+        max-height: calc(100dvh - 20px);
+        background-color: vars.$primaryColor;
+        border-radius: vars.$borderRadius;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: flex-end;
+
+        &_close {
+            transition: transform .3s ease;
+            
+            path {
+                fill: vars.$secondaryColor;
+            }
+
+            &:hover {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &__title {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    &__form {
+        margin-top: 20px;
+
+        input {
+            @include mixins.lightInput;
+            margin-top: 20px;
+        }
+
+        textarea {
+            @include mixins.lightInput;
+            margin-top: 20px;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+
+        &_success {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+    }
+}
+
+.active {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (max-width: 768px) {
+    .learn {
+        &__wrapper {
+            border-radius: vars.$mobileBorderRadius;
+        }
+    }
+}

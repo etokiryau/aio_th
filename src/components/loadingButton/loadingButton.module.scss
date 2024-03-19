@@ -1,0 +1,58 @@
+@use '@/styles/_variables.module' as vars;
+@use '@/styles/_mixins.module' as mixins;
+
+.button {
+    @include mixins.button;
+    padding: 8px 36px;
+    width: 100%;
+
+    &__text {
+        position: relative;
+        margin-inline: auto;
+        display: inline;
+
+        &_spinner {
+            position: absolute;
+            top: 50%;
+            left: -22px;
+            transform: translateY(-50%);
+            height: 18px;
+        }
+    }
+}
+
+.dark {
+    color: vars.$secondaryColor;
+    background-color: vars.$primaryColor;
+    border-color: vars.$primaryColor;
+}
+
+.light {
+    color: vars.$primaryColor;
+    background-color: vars.$secondaryColor;
+    border-color: vars.$primaryColor;
+}
+
+.red {
+    color: vars.$secondaryColor;
+    background-color: vars.$redStatusColor;
+    border-color: vars.$redStatusColor;
+}
+
+.blue {
+    color: vars.$secondaryColor;
+    background-color: vars.$blueStatusColor;
+    border-color: vars.$blueStatusColor;
+}
+
+.green {
+    color: vars.$secondaryColor;
+    background-color: vars.$greenStatusColor;
+    border-color: vars.$greenStatusColor;
+}
+
+.yellow {
+    color: vars.$primaryColor;
+    background-color: vars.$yellowStatusColor;
+    border-color: vars.$yellowStatusColor;
+}
