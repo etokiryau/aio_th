@@ -7,7 +7,7 @@ import CarouselSlider from "@/components/carouselSlider/CarouselSlider";
 import QuizForm from "@/components/quizForm/QuizForm";
 
 import styles from "./home.module.scss";
-import LearnForm from "@/components/customise/LearnForm";
+import LearnForm from "@/components/learnForm/LearnForm";
 
 interface IOpportunity {
     name: string

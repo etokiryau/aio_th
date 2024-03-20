@@ -13,7 +13,7 @@ const Header: FC = () => {
 				<LogoIcon />
 				<p>AIO house</p>
 			</Link>
-			<p>+7 (964) 365-71-10</p>
+			<Link href="tel:(657) 549-0404">(657) 549-0404</Link>
 		</header>
 	);
 };

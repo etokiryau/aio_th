@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { useFormik } from 'formik';
+import axios from "axios";
 
 import CrossIcon from "@/components/ui/_icons/CrossIcon";
 import LoadingButton from "@/components/loadingButton/LoadingButton";
@@ -21,6 +22,7 @@ interface IForm {
 const LearnForm: FC<IProps> = ({ state }) => {
     const [isPopup, setIsPopup] = state;
     const [isSent, setIsSent] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     useOverflowHidden(isPopup);
 
@@ -37,15 +39,11 @@ const LearnForm: FC<IProps> = ({ state }) => {
 
     const handleSubmit = async (values: IForm): Promise<void> => {
         try {
-            await new Promise((resolve) => setTimeout(() => {
-                resolve(setIsSent(true));
-            }, 1000));
-            // setIsResponsed(true);
-            // setTimeout(() => setIsResponsed(false), 3000);
-        } catch {
-            // setIsSuccess(false);
-            // setIsResponsed(true);
-            // setTimeout(() => setIsResponsed(false), 3000);
+            await axios.post('/api/sendContacts', values);
+            setIsSent(true);
+        } catch (error) {
+            setIsError(true);
+            console.error('Error sending email:', error);
         }
     };
 
@@ -107,6 +105,9 @@ const LearnForm: FC<IProps> = ({ state }) => {
                         }
                         {isSent && 
                             <p className={styles.learn__form_success}>Your application is successfully sent!</p>
+                        }
+                        {isError &&
+                            <p className={styles.quiz__title}>Something went wrong with email sending</p>
                         }
                     </div>
                 </form>

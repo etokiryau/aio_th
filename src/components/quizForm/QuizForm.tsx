@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { useFormik } from 'formik';
+import axios from "axios";
 
 import LoadingButton from "../loadingButton/LoadingButton";
 
@@ -27,6 +28,7 @@ const QuizForm: FC = () => {
     const [step, setStep] = useState(0);
     const [isContacts, setIsContacts] = useState(false);
     const [isSent, setIsSent] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     const quizData: Record<number, IStepData> = {
         0: {
@@ -52,7 +54,7 @@ const QuizForm: FC = () => {
         4: {
             name: 'distance',
             title: 'Distance from the coast',
-            options: ['First line', 'Secondline', 'Within a 20-minute drive', 'No matter'],
+            options: ['First line', 'Second line', 'Within a 20-minute drive', 'No matter'],
         },
         5: {
             name: 'purpose',
@@ -77,7 +79,15 @@ const QuizForm: FC = () => {
         onSubmit: (values: IForm) => handleSubmit(values),
     });
 
-    const handleSubmit = (values: IForm) => setIsSent(true);
+    const handleSubmit = async (values: IForm) => {
+        try {
+            await axios.post('/api/sendInquire', values);
+            setIsSent(true);
+        } catch (error) {
+            setIsError(true);
+            console.error('Error sending email:', error);
+        }
+    };
 
     const handleNextStep = () => {
         if (step === 5) {
@@ -185,6 +195,9 @@ const QuizForm: FC = () => {
                 }
                 {isSent &&
                     <p className={styles.quiz__title}>Your application is successfully sent!</p>
+                }
+                {isError &&
+                    <p className={styles.quiz__title}>Something went wrong with email sending</p>
                 }
             </>}
             
