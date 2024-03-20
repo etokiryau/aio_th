@@ -8,6 +8,7 @@ import QuizForm from "@/components/quizForm/QuizForm";
 
 import styles from "./home.module.scss";
 import LearnForm from "@/components/learnForm/LearnForm";
+import AdvantageBento2 from "@/components/ui/advantageBento2/AdvantageBento2";
 
 interface IOpportunity {
     name: string
@@ -172,6 +173,10 @@ const Home: FC = () => {
                             <p id={styles.description}>{opportunitiesData[currentOpportunity].description}</p>
                         </div>
                     </div>
+                </section>
+
+                <section className={styles.home__bento}>
+                    <AdvantageBento2 />
                 </section>
 
                 <section className={styles.home__projects}>

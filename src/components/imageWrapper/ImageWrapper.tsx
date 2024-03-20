@@ -27,7 +27,7 @@ const ImageWrapper: FC<IProps> = (props) => {
                 alt={alt}
                 {...otherProps}
                 className={contain ? styles.contain : ''}
-                onLoadingComplete={handleOnLoad}
+                onLoad={handleOnLoad}
             />
         </div>
         
