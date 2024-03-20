@@ -83,6 +83,7 @@ const QuizForm: FC = () => {
         try {
             await axios.post('/api/sendInquire', values);
             setIsSent(true);
+            setIsError(false);
         } catch (error) {
             setIsError(true);
             console.error('Error sending email:', error);

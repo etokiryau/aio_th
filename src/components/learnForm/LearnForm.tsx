@@ -41,6 +41,7 @@ const LearnForm: FC<IProps> = ({ state }) => {
         try {
             await axios.post('/api/sendContacts', values);
             setIsSent(true);
+            setIsError(false);
         } catch (error) {
             setIsError(true);
             console.error('Error sending email:', error);
