@@ -4,8 +4,8 @@
 .bento {
     margin-top: 140px;
     display: grid;
-    grid-template-columns: repeat(3, min(355px, calc((100% - 40px) / 3)));
-    grid-auto-rows: min(355px, calc((100vw - 80px) / 3));
+    grid-template-columns: repeat(3, min(300px, calc((100% - 40px) / 3)));
+    grid-auto-rows: min(300px, calc((100vw - 80px) / 3));
     justify-content: center;
     gap: 20px;
     color: rgba($color: vars.$primaryColor, $alpha: .6);
@@ -358,6 +358,10 @@
                     height: 50px;
                 }
             }
+
+            &::after {
+                box-shadow: 0px 0px 100px 100px rgba($color: vars.$additionalColor, $alpha: .3);
+            }
         }
 
         .materials {
@@ -464,6 +468,11 @@
                 svg, img {
                     height: 40px;
                 }
+            }
+
+            &::after {
+                height: 10%;
+                box-shadow: 0px 0px 30px 30px rgba($color: vars.$additionalColor, $alpha: .3);
             }
         }
 
