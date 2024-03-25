@@ -7,10 +7,9 @@ import CarouselSlider from "@/components/carouselSlider/CarouselSlider";
 import QuizForm from "@/components/quizForm/QuizForm";
 import LearnForm from "@/components/learnForm/LearnForm";
 import AdvantageBento2 from "@/components/ui/advantageBento2/AdvantageBento2";
-import ImageWrapper from "@/components/imageWrapper/ImageWrapper";
+import ReasonGraph from "@/components/reasonGraph/ReasonGraph";
 
 import styles from "./home.module.scss";
-import ReasonGraph from "@/components/reasonGraph/ReasonGraph";
 
 interface IOpportunity {
     name: string
@@ -87,13 +86,6 @@ const Home: FC = () => {
 
     const toggleForm = () => setIsLearn(prev => !prev);
 
-    const graph1x = ['2015', '2016', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
-    const graph1y = [30, 34, 38];
-    const graph2x = ['2011', '2016', '2021'];
-    const graph2y = [104, 130, 156];
-    const graph3x = ['1999', '2007', '2015', '2023'];
-    const graph3y = [160, 330, 500];
-
     const opportunitiesContent: JSX.Element[] = opportunitiesData.map((item, i) => {
         return (
             <li 
@@ -134,7 +126,6 @@ const Home: FC = () => {
                     </div>
                 </section>
                 
-
                 <section className={styles.home__opportunities}>
                     <h2>Unique proprietary construction management platform</h2>
                     <div className={styles.home__opportunities_content}>

@@ -193,11 +193,10 @@ const QuizForm: FC = () => {
                     />
                 </div>
                 
-                {!isError &&
+                {isError &&
                     <p className={styles.quiz__error}>Something went wrong with submitting</p>
                 }
             </>}
-            
         </form>
     );
 };
