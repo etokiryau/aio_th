@@ -205,7 +205,7 @@ const Home: FC = () => {
                                 <div className={styles.graph__left}>
                                     <div className={styles.graph__left_wrapper}>
                                         <div className={styles.graph__left_image}>
-                                            <ImageWrapper src="/img/graph1.png" alt="Currency rate" width={900} height={900} />
+                                            <ImageWrapper src="/img/graph1.png" alt="Currency rate" width={960} height={490} />
                                         </div>
                                         
                                         <div className={styles.graph__left_down}>
@@ -230,7 +230,7 @@ const Home: FC = () => {
                                 <div className={styles.graph__left}>
                                     <div className={styles.graph__left_wrapper}>
                                         <div className={styles.graph__left_image}>
-                                            <ImageWrapper src="/img/graph2.png" alt="Currency rate" width={900} height={900} />
+                                            <ImageWrapper src="/img/graph2.png" alt="Currency rate" width={960} height={315} />
                                         </div>
                                         
                                         <div className={styles.graph__left_down}>
@@ -255,7 +255,7 @@ const Home: FC = () => {
                                 <div className={styles.graph__left}>
                                     <div className={styles.graph__left_wrapper}>
                                         <div className={styles.graph__left_image}>
-                                            <ImageWrapper src="/img/graph3.png" alt="Currency rate" width={900} height={900} />
+                                            <ImageWrapper src="/img/graph3.png" alt="Currency rate" width={960} height={376} />
                                         </div>
                                         
                                         <div className={styles.graph__left_down}>
