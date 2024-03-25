@@ -1,0 +1,68 @@
+@use '@/styles/_variables.module' as vars;
+@use '@/styles/_mixins.module' as mixins;
+
+.graph {
+    @include mixins.flexCenter;
+    gap: 30px;
+
+    &__main {
+        padding: 15px;
+        display: flex;
+        gap: 10px;
+        width: min(100%, 800px);
+        height: 360px;
+        box-shadow: vars.$boxShadow;
+        border-radius: vars.$borderRadius;
+        font-size: 14px;
+
+        &_left {
+            @include mixins.scrollbar;
+            overflow-x: scroll;
+            padding-bottom: 10px;
+            width: 100%;
+
+            &_wrapper {
+                width: max(100%, 600px);
+                height: 100%;
+            }
+
+            &_image {
+                width: 100%;
+                height: calc(100% - 17px);
+            }
+
+            &_down {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        &_right {
+            padding: 10px 0 50px;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+        }
+    }
+
+    &__text {
+        font-size: 22px;
+        width: min(100%, 250px);
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .graph {
+        display: block;
+
+        &__main {
+            border-radius: vars.$mobileBorderRadius;
+        }
+
+        &__text {
+            margin-top: 10px;
+            width: unset;
+        }
+    }
+}

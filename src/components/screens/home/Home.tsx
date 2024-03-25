@@ -7,9 +7,10 @@ import CarouselSlider from "@/components/carouselSlider/CarouselSlider";
 import QuizForm from "@/components/quizForm/QuizForm";
 import LearnForm from "@/components/learnForm/LearnForm";
 import AdvantageBento2 from "@/components/ui/advantageBento2/AdvantageBento2";
+import ImageWrapper from "@/components/imageWrapper/ImageWrapper";
 
 import styles from "./home.module.scss";
-import ImageWrapper from "@/components/imageWrapper/ImageWrapper";
+import ReasonGraph from "@/components/reasonGraph/ReasonGraph";
 
 interface IOpportunity {
     name: string
@@ -86,12 +87,12 @@ const Home: FC = () => {
 
     const toggleForm = () => setIsLearn(prev => !prev);
 
-    const graph1x = ['Jul', '2016', 'Jul', '2018', 'Jul', '2019', 'Jul', '2020', 'Jul', '2021', 'Jul', '2022', 'Jul', '2023', 'Jul', '2024'];
-    const graph1y = [30, 31, 32, 33, 34, 35, 36, 37, 38, 39];
+    const graph1x = ['2015', '2016', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
+    const graph1y = [30, 34, 38];
     const graph2x = ['2011', '2016', '2021'];
-    const graph2y = [104, 117, 130, 143, 156];
+    const graph2y = [104, 130, 156];
     const graph3x = ['1999', '2007', '2015', '2023'];
-    const graph3y = [160, 245, 330, 415, 500];
+    const graph3y = [160, 330, 500];
 
     const opportunitiesContent: JSX.Element[] = opportunitiesData.map((item, i) => {
         return (
@@ -201,78 +202,36 @@ const Home: FC = () => {
                     <h2>The main reasons to invest in Thailand property</h2>
                     <ul>
                         <li>
-                            <div className={styles.graph}>
-                                <div className={styles.graph__left}>
-                                    <div className={styles.graph__left_wrapper}>
-                                        <div className={styles.graph__left_image}>
-                                            <ImageWrapper src="/img/graph1.png" alt="Currency rate" width={960} height={490} />
-                                        </div>
-                                        
-                                        <div className={styles.graph__left_down}>
-                                            {graph1x.map((item, i) => {
-                                                return <p key={i}>{item}</p>;
-                                            })}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={styles.graph__right}>
-                                    {graph1y.map((item, i) => {
-                                        return <p key={i}>{item}</p>;
-                                    })}
-                                </div>
-                                
-                            </div>
-                            <p className={styles.text}>Thai baht to dollar exchange rate</p>
+                            <ReasonGraph 
+                                xData={['2015', '2016', '2018', '2019', '2020', '2021', '2022', '2023', '2024']}
+                                yData={[30, 34, 38]}
+                                src="/img/graph1.png"
+                                imgHeight={490}
+                                text="Thai baht to US dollar exchange rate"
+                                yPadding="10px 0 50px"
+                            />
                         </li>
 
                         <li>
-                            <div className={styles.graph}>
-                                <div className={styles.graph__left}>
-                                    <div className={styles.graph__left_wrapper}>
-                                        <div className={styles.graph__left_image}>
-                                            <ImageWrapper src="/img/graph2.png" alt="Currency rate" width={960} height={315} />
-                                        </div>
-                                        
-                                        <div className={styles.graph__left_down}>
-                                            {graph2x.map((item, i) => {
-                                                return <p key={i}>{item}</p>;
-                                            })}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={styles.graph__right}>
-                                    {graph2y.map((item, i) => {
-                                        return <p key={i}>{item}</p>;
-                                    })}
-                                </div>
-                                
-                            </div>
-                            <p className={styles.text}>House price index</p>
+                            <ReasonGraph 
+                                xData={['2011', '2016', '2021']}
+                                yData={[104, 130, 156]}
+                                src="/img/graph2.png"
+                                imgHeight={315}
+                                text="House price index"
+                                yPadding="10px 0 30px"
+                            />
                         </li>
 
                         <li>
-                            <div className={styles.graph}>
-                                <div className={styles.graph__left}>
-                                    <div className={styles.graph__left_wrapper}>
-                                        <div className={styles.graph__left_image}>
-                                            <ImageWrapper src="/img/graph3.png" alt="Currency rate" width={960} height={376} />
-                                        </div>
-                                        
-                                        <div className={styles.graph__left_down}>
-                                            {graph3x.map((item, i) => {
-                                                return <p key={i}>{item}</p>;
-                                            })}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={styles.graph__right}>
-                                    {graph3y.map((item, i) => {
-                                        return <p key={i}>{item}</p>;
-                                    })}
-                                </div>
-                                
-                            </div>
-                            <p className={styles.text}>Thailand GDP graph</p>
+                            <ReasonGraph 
+                                xData={['1999', '2007', '2015', '2023']}
+                                yData={[160, 330, 500]}
+                                src="/img/graph3.png"
+                                imgHeight={376}
+                                text="Thailand GDP graph (USD billion)"
+                                yPadding="10px 0 50px"
+                            />
                         </li>
                     </ul>
                 </section>

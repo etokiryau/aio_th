@@ -151,69 +151,8 @@
             padding-inline: 20px;
 
             li {
-                @include mixins.flexCenter;
-                gap: 10px 30px;
-
-                .graph {
-                    padding: 15px;
-                    display: flex;
-                    gap: 10px;
-                    width: min(100%, 1023px);
-                    box-shadow: vars.$boxShadow;
-                    border-radius: vars.$borderRadius;
-                    font-size: 14px;
-
-                    &__left {
-                        @include mixins.noScrollbar;
-                        overflow-x: auto;
-                        width: 100%;
-
-                        &_wrapper {
-                            width: max(100%, 600px);
-                        }
-
-                        &_image {
-                            width: 100%;
-                            height: calc(100% - 17px);
-                        }
-
-                        &_down {
-                            display: flex;
-                            justify-content: space-between;
-                        }
-                    }
-
-                    &__right {
-                        padding: 10px 0 50px;
-                        display: flex;
-                        flex-direction: column-reverse;
-                        justify-content: space-between;
-                    }
-                }
-
-                .text {
-                    width: min(100%, 250px);
-                    text-align: center;
-                }
-
                 &:nth-child(n+2) {
                     margin-top: 60px;
-                }
-
-                &:nth-child(2) {
-                    .graph {
-                        &__right {
-                            padding: 10px 0 30px;
-                        }
-                    }
-                }
-
-                &:nth-child(3) {
-                    .graph {
-                        &__right {
-                            padding: 25px 0 30px 0;
-                        }
-                    }
                 }
             }
         }
@@ -388,23 +327,6 @@
         &__projects {
             &_slider {
                 margin-top: 42px;
-            }
-        }
-
-        &__reasons {
-            ul {    
-                li {
-                    display: block;
-
-                    .graph {
-                        border-radius: vars.$mobileBorderRadius;
-                    }
-
-                    .text {
-                        margin-top: 10px;
-                        width: unset;
-                    }
-                }
             }
         }
 
