@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { useRouter } from "next/router";
 import { useFormik } from 'formik';
 import axios from "axios";
 
@@ -27,8 +28,8 @@ interface IStepData {
 const QuizForm: FC = () => {
     const [step, setStep] = useState(0);
     const [isContacts, setIsContacts] = useState(false);
-    const [isSent, setIsSent] = useState(false);
     const [isError, setIsError] = useState(false);
+    const { push } = useRouter();
 
     const quizData: Record<number, IStepData> = {
         0: {
@@ -75,7 +76,6 @@ const QuizForm: FC = () => {
             name: '',
             phone: '',
         },
-        validateOnMount: true,
         onSubmit: (values: IForm) => handleSubmit(values),
     });
 
@@ -84,7 +84,7 @@ const QuizForm: FC = () => {
         
         try {
             await axios.post('/api/sendInquire', values);
-            setIsSent(true);
+            push('/thanks');
         } catch (error) {
             setIsError(true);
             console.error('Error sending email:', error);
@@ -160,7 +160,7 @@ const QuizForm: FC = () => {
                         id="name" name="name"
                         value={formik.values.name}
                         onChange={formik.handleChange}
-                        disabled={isSent}
+                        disabled={formik.isSubmitting}
                     />
 
                     <input 
@@ -168,7 +168,7 @@ const QuizForm: FC = () => {
                         id="email" name="email"
                         value={formik.values.email}
                         onChange={formik.handleChange}
-                        disabled={isSent}
+                        disabled={formik.isSubmitting}
                     />
 
                     <input 
@@ -176,30 +176,25 @@ const QuizForm: FC = () => {
                         id="phone" name="phone"
                         value={formik.values.phone}
                         onChange={formik.handleChange}
-                        disabled={isSent}
+                        disabled={formik.isSubmitting}
                     />
                 </div>
                 
-
-                {!isSent &&
-                    <div className={styles.quiz__submit}>
-                        <LoadingButton
-                            title="Submit application"
-                            styleType="light"
-                            isloading={formik.isSubmitting}
-                            type="submit"
-                            disabled={
-                                Boolean(!formik.values.name || !formik.values.email || !formik.values.phone) || 
-                                formik.isSubmitting
-                            }
-                        />
-                    </div>
-                }
-                {isSent &&
-                    <p className={styles.quiz__title}>Your application is successfully sent!</p>
-                }
-                {isError &&
-                    <p className={styles.quiz__title}>Something went wrong with email sending</p>
+                <div className={styles.quiz__submit}>
+                    <LoadingButton
+                        title="Submit application"
+                        styleType="light"
+                        isloading={formik.isSubmitting}
+                        type="submit"
+                        disabled={
+                            Boolean(!formik.values.name || !formik.values.email || !formik.values.phone) || 
+                            formik.isSubmitting
+                        }
+                    />
+                </div>
+                
+                {!isError &&
+                    <p className={styles.quiz__error}>Something went wrong with submitting</p>
                 }
             </>}
             

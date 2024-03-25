@@ -2,6 +2,10 @@
 @use '@/styles/_mixins.module' as mixins;
 
 .home {
+    section:nth-child(n+3) {
+        margin-top: 155px;
+    }
+
     h1, h2 {
         text-align: center;
     }
@@ -54,8 +58,6 @@
     }
 
     &__opportunities {
-        margin-top: 155px;
-
         &_mobileContent {
             display: none;
         }
@@ -128,8 +130,6 @@
     }
 
     &__projects {
-        margin-top: 155px;
-
         &_slider {
             margin-top: 72px;
             height: clamp(250px, 60vw, 60dvh);
@@ -145,9 +145,79 @@
         }
     }
 
-    &__form {
-        margin-top: 155px;
+    &__reasons {
+        ul {
+            margin-top: 72px;
+            padding-inline: 20px;
 
+            li {
+                display: flex;
+                align-items: center;
+                gap: 10px 30px;
+
+                .graph {
+                    padding: 15px;
+                    display: flex;
+                    gap: 10px;
+                    box-shadow: vars.$boxShadow;
+                    border-radius: vars.$borderRadius;
+                    font-size: 14px;
+
+                    &__left {
+                        @include mixins.noScrollbar;
+                        overflow-x: auto;
+
+                        &_wrapper {
+                            width: max(100%, 600px);
+                        }
+
+                        &_image {
+                            height: calc(100% - 17px);
+                        }
+
+                        &_down {
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    }
+
+                    &__right {
+                        padding: 10px 0 50px;
+                        display: flex;
+                        flex-direction: column-reverse;
+                        justify-content: space-between;
+                    }
+                }
+
+                .text {
+                    width: min(100%, 250px);
+                    text-align: center;
+                }
+
+                &:nth-child(n+2) {
+                    margin-top: 60px;
+                }
+
+                &:nth-child(2) {
+                    .graph {
+                        &__right {
+                            padding: 10px 0 30px;
+                        }
+                    }
+                }
+
+                &:nth-child(3) {
+                    .graph {
+                        &__right {
+                            padding: 25px 0 30px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__form {
         &_content {
             margin-top: 72px;
             display: flex;
@@ -319,6 +389,23 @@
             }
         }
 
+        &__reasons {
+            ul {    
+                li {
+                    display: block;
+
+                    .graph {
+                        border-radius: vars.$mobileBorderRadius;
+                    }
+
+                    .text {
+                        margin-top: 10px;
+                        width: unset;
+                    }
+                }
+            }
+        }
+
         &__form {
             &_content {
                 margin-top: 42px;
@@ -328,7 +415,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
     .home {
         h2 {
             text-align: left;

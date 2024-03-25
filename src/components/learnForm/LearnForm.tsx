@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { useRouter } from "next/router";
 import { useFormik } from 'formik';
 import axios from "axios";
 
@@ -21,8 +22,8 @@ interface IForm {
 
 const LearnForm: FC<IProps> = ({ state }) => {
     const [isPopup, setIsPopup] = state;
-    const [isSent, setIsSent] = useState(false);
     const [isError, setIsError] = useState(false);
+    const { push } = useRouter();
 
     useOverflowHidden(isPopup);
 
@@ -33,7 +34,6 @@ const LearnForm: FC<IProps> = ({ state }) => {
             telephone: '',
             comment: '',
         },
-        validateOnMount: true,
         onSubmit: (values: IForm) => handleSubmit(values),
     });
 
@@ -42,7 +42,7 @@ const LearnForm: FC<IProps> = ({ state }) => {
         
         try {
             await axios.post('/api/sendContacts', values);
-            setIsSent(true);
+            push('/thanks');
         } catch (error) {
             setIsError(true);
             console.error('Error sending email:', error);
@@ -68,51 +68,47 @@ const LearnForm: FC<IProps> = ({ state }) => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         type="email"  id="email"  name="email" placeholder="Email"
-                        disabled={isSent}
+                        disabled={formik.isSubmitting}
                     />
                     <input
                         value={formik.values.name}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         id="name" name="name" type="text" placeholder="Name"
-                        disabled={isSent}
+                        disabled={formik.isSubmitting}
                     />
                     <input
                         value={formik.values.telephone}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         id="telephone" name="telephone" type="tel" placeholder="Phone number"
-                        disabled={isSent}
+                        disabled={formik.isSubmitting}
                     />
 
                     <textarea
                         value={formik.values.comment}
                         onChange={formik.handleChange}
                         id="comment" name="comment" placeholder="Comment"
-                        disabled={isSent}
+                        disabled={formik.isSubmitting}
                     />
 
                     <div className={styles.learn__form_submit}>
-                        {!isSent && 
-                            <LoadingButton 
-                                title="Submit application"
-                                styleType="light"
-                                isloading={formik.isSubmitting}
-                                type="submit" 
-                                disabled={
-                                    formik.isSubmitting || 
-                                    Boolean(!formik.values.email || !formik.values.name || !formik.values.telephone)
-                                }
-                            />
-                        }
-                        {isSent && 
-                            <p className={styles.learn__form_success}>Your application is successfully sent!</p>
-                        }
-                        {isError &&
-                            <p className={styles.quiz__title}>Something went wrong with email sending</p>
-                        }
+                        <LoadingButton 
+                            title="Submit application"
+                            styleType="light"
+                            isloading={formik.isSubmitting}
+                            type="submit" 
+                            disabled={
+                                formik.isSubmitting || 
+                                Boolean(!formik.values.email || !formik.values.name || !formik.values.telephone)
+                            }
+                        />
                     </div>
                 </form>
+
+                {isError &&
+                    <p className={styles.learn__error}>Something went wrong with submitting</p>
+                }
             </div>
         </div>
     );

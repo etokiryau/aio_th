@@ -5,10 +5,11 @@ import MainLayout from "@/components/layouts/mainLayout/MainLayout";
 import AdvatageCard from "@/components/ui/advantageCard/AdvantageCard";
 import CarouselSlider from "@/components/carouselSlider/CarouselSlider";
 import QuizForm from "@/components/quizForm/QuizForm";
-
-import styles from "./home.module.scss";
 import LearnForm from "@/components/learnForm/LearnForm";
 import AdvantageBento2 from "@/components/ui/advantageBento2/AdvantageBento2";
+
+import styles from "./home.module.scss";
+import ImageWrapper from "@/components/imageWrapper/ImageWrapper";
 
 interface IOpportunity {
     name: string
@@ -84,6 +85,13 @@ const Home: FC = () => {
     }, []);
 
     const toggleForm = () => setIsLearn(prev => !prev);
+
+    const graph1x = ['Jul', '2016', 'Jul', '2018', 'Jul', '2019', 'Jul', '2020', 'Jul', '2021', 'Jul', '2022', 'Jul', '2023', 'Jul', '2024'];
+    const graph1y = [30, 31, 32, 33, 34, 35, 36, 37, 38, 39];
+    const graph2x = ['2011', '2016', '2021'];
+    const graph2y = [104, 117, 130, 143, 156];
+    const graph3x = ['1999', '2007', '2015', '2023'];
+    const graph3y = [160, 245, 330, 415, 500];
 
     const opportunitiesContent: JSX.Element[] = opportunitiesData.map((item, i) => {
         return (
@@ -190,7 +198,83 @@ const Home: FC = () => {
                 </section>
 
                 <section className={styles.home__reasons}>
+                    <h2>The main reasons to invest in Thailand property</h2>
+                    <ul>
+                        <li>
+                            <div className={styles.graph}>
+                                <div className={styles.graph__left}>
+                                    <div className={styles.graph__left_wrapper}>
+                                        <div className={styles.graph__left_image}>
+                                            <ImageWrapper src="/img/graph1.png" alt="Currency rate" width={900} height={900} />
+                                        </div>
+                                        
+                                        <div className={styles.graph__left_down}>
+                                            {graph1x.map((item, i) => {
+                                                return <p key={i}>{item}</p>;
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.graph__right}>
+                                    {graph1y.map((item, i) => {
+                                        return <p key={i}>{item}</p>;
+                                    })}
+                                </div>
+                                
+                            </div>
+                            <p className={styles.text}>Thai baht to dollar exchange rate</p>
+                        </li>
 
+                        <li>
+                            <div className={styles.graph}>
+                                <div className={styles.graph__left}>
+                                    <div className={styles.graph__left_wrapper}>
+                                        <div className={styles.graph__left_image}>
+                                            <ImageWrapper src="/img/graph2.png" alt="Currency rate" width={900} height={900} />
+                                        </div>
+                                        
+                                        <div className={styles.graph__left_down}>
+                                            {graph2x.map((item, i) => {
+                                                return <p key={i}>{item}</p>;
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.graph__right}>
+                                    {graph2y.map((item, i) => {
+                                        return <p key={i}>{item}</p>;
+                                    })}
+                                </div>
+                                
+                            </div>
+                            <p className={styles.text}>House price index</p>
+                        </li>
+
+                        <li>
+                            <div className={styles.graph}>
+                                <div className={styles.graph__left}>
+                                    <div className={styles.graph__left_wrapper}>
+                                        <div className={styles.graph__left_image}>
+                                            <ImageWrapper src="/img/graph3.png" alt="Currency rate" width={900} height={900} />
+                                        </div>
+                                        
+                                        <div className={styles.graph__left_down}>
+                                            {graph3x.map((item, i) => {
+                                                return <p key={i}>{item}</p>;
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.graph__right}>
+                                    {graph3y.map((item, i) => {
+                                        return <p key={i}>{item}</p>;
+                                    })}
+                                </div>
+                                
+                            </div>
+                            <p className={styles.text}>Thailand GDP graph</p>
+                        </li>
+                    </ul>
                 </section>
 
                 <section className={styles.home__form}>

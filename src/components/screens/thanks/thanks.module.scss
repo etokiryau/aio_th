@@ -1,0 +1,23 @@
+@use '@/styles/_variables.module' as vars;
+@use '@/styles/_mixins.module' as mixins;
+
+.thanks {
+    display: flex;
+    justify-content: center;
+
+    &__wrapper {
+        margin-top: 20px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        box-shadow: vars.$boxShadow;
+        border-radius: vars.$mobileBorderRadius;
+
+        p {
+            text-align: center;
+            line-height: 24px;
+        }
+    }
+}

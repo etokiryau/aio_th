@@ -1,0 +1,30 @@
+@use '@/styles/_variables.module' as vars;
+@use '@/styles/_mixins.module' as mixins;
+
+.notFound {
+    @include mixins.flexCenter;
+    padding-inline: 20px;
+    flex-direction: column;
+    height: calc(100dvh - 187px);
+
+    p {
+        font-size: vars.$headerFontSize;
+        text-align: center
+    }
+
+    a {
+        @include mixins.button;
+        margin-top: 20px;
+        text-align: center
+    }
+}
+
+@media (max-width: 768px) {
+    .notFound {
+        height: calc(100dvh - 163px);
+
+        p {
+            font-size: vars.$headerMobileFontSize;
+        }
+    }
+}
