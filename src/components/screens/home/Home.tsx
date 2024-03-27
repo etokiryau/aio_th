@@ -23,7 +23,9 @@ const Home: FC = () => {
     const opportunityRefs = useRef<HTMLLIElement[] | null[]>([]);
     const opportunityMobileRefs = useRef<HTMLLIElement[] | null[]>([]);
     const mobileOppListRef = useRef<HTMLUListElement>(null);
-    const metadata = { title: 'AIO house', description: 'Private construction', 
+    const metadata = { 
+        title: 'High-tech real estate in Thailand: houses and villas for investments and accommodations', 
+        description: 'Lots of houses and villas in the best Thailand locations. Maximum detail of all projects, which are designed with own digital ecosystem. Unique real estate market offer from the developer, due to most effective and modern technologies allow to get 12% passive income 40% ROI in the first year.', 
         url: process.env.SITE_URL ?? '',
     };
 
@@ -51,10 +53,18 @@ const Home: FC = () => {
     ];
 
     const slides = [
-        { title: 'Project 1', src: '/mock/project11.jpg' },
-        { title: 'Project 1', src: '/mock/project12.jpg' },
-        { title: 'Project 1', src: '/mock/project13.jpg' },
-        { title: 'Project 1', src: '/mock/Screenshot_21.png' },
+        { title: 'Project 1', src: '/img/project1.jpg' },
+        { title: 'Project 2', src: '/img/project2.jpg' },
+        { title: 'Project 3', src: '/img/project3.jpg' },
+        { title: 'Project 4', src: '/img/project4.jpg' },
+        { title: 'Project 5', src: '/img/project5.jpg' },
+        { title: 'Project 6', src: '/img/project6.jpg' },
+        { title: 'Project 7', src: '/img/project7.jpg' },
+        { title: 'Project 8', src: '/img/project8.jpg' },
+        { title: 'Project 9', src: '/img/project9.jpg' },
+        { title: 'Project 10', src: '/img/project10.jpg' },
+        { title: 'Project 11', src: '/img/project11.jpg' },
+        { title: 'Project 12', src: '/img/project12.jpg' },
     ];
 
     useEffect(() => {

@@ -8,10 +8,9 @@
     color: vars.$secondaryColor;
     background-color: rgba($color: vars.$secondaryColor, $alpha: .7);
     z-index: 1000;
-    transform: scale(.9);
     visibility: hidden;
-    opacity: 0;
-    transition: .3s ease;    
+    opacity: 0; 
+    transition: .3s ease;  
 
     &__wrapper {
         @include mixins.noScrollbar;
@@ -22,6 +21,8 @@
         max-height: calc(100dvh - 20px);
         background-color: vars.$primaryColor;
         border-radius: vars.$borderRadius;
+        transform: scale(.9);
+        transition: .3s ease;
     }
 
     &__header {
@@ -78,7 +79,10 @@
 .active {
     visibility: visible;
     opacity: 1;
-    transform: scale(1);
+
+    .learn__wrapper {
+        transform: scale(1);
+    }
 }
 
 @media (max-width: 768px) {

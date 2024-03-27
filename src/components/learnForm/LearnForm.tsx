@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { useFormik } from 'formik';
 import axios from "axios";
@@ -23,6 +23,7 @@ interface IForm {
 const LearnForm: FC<IProps> = ({ state }) => {
     const [isPopup, setIsPopup] = state;
     const [isError, setIsError] = useState(false);
+    const wrapperRef = useRef<HTMLDivElement>(null);
     const { push } = useRouter();
 
     useOverflowHidden(isPopup);
@@ -51,8 +52,15 @@ const LearnForm: FC<IProps> = ({ state }) => {
 
     const togglePopup = () => setIsPopup(prev => !prev);
 
+    const closePopup = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (e.target === wrapperRef.current) togglePopup();
+    };
+
     return (
-        <div className={`${styles.learn} ${isPopup ? styles.active : ''}`}>
+        <div ref={wrapperRef}
+            onClick={closePopup}
+            className={`${styles.learn} ${isPopup ? styles.active : ''}`}
+        >
             <div className={styles.learn__wrapper}>
                 <div className={styles.learn__header}>
                     <button type="button" onClick={togglePopup} className={styles.learn__header_close}>

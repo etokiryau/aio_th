@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from "react";
-import { TMeta } from "./meta.types";
+import type { TMeta } from "./meta.types";
 import Head from "next/head";
 
 const Meta: FC<PropsWithChildren<TMeta>> = (props) => {
@@ -17,7 +17,7 @@ const Meta: FC<PropsWithChildren<TMeta>> = (props) => {
                         <meta name="description" content={props.description} />
                         <meta name="og:description" content={props.description} />
                         <meta property="og:url" content={props.url} />
-                        <meta name="keywords" content="quality design, affordable prices, architecture, construction, project, plans, cottage, house, private house" />
+                        <meta name="keywords" content="High-tech real estate, Thailand properties, Investment opportunities, Houses and villas, Accommodations in Thailand, Prime locations in Thailand, Detailed project information, Digital ecosystem integration, Unique real estate market off,er Passive income opportunities, Modern technologies in real e,state High ROI (Return on Investmen,t) Real estate developer in Thai,land Innovative property solutions, Investment potential in Thailand" />
                     </> 
                     : <meta name="robots" content="noindex, nofollow" />
                 }
