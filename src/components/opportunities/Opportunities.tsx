@@ -1,7 +1,8 @@
 import { FC, useEffect, useRef, useState } from "react";
 
-import styles from "./opportunities.module.scss";
 import VideoWrapper from "../videoWrapper/VideoWrapper";
+
+import styles from "./opportunities.module.scss";
 
 interface IOpportunity {
     name: string
@@ -47,7 +48,7 @@ const Opportunities: FC = () => {
         const handleScroll = () => {
             opportunityRefs.current.forEach((ref, i) => {
                 const { top, bottom } = ref?.getBoundingClientRect() ?? { top: 0, bottom: 0 };
-                if (i=== 1) console.log(top, bottom, windowHeight / 2 + 87)
+                
                 if (
                     top < ((windowHeight - 87) / 2 + 17) && 
                     bottom > ((windowHeight - 87) / 2 + 157)

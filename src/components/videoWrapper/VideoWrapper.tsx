@@ -13,20 +13,20 @@ const VideoWrapper: FC<IProps> = ({ src }) => {
     const [isPlaying, setIsPlaying] = useState(true);
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 
-    const handleTimeUpdate = () => {
-        const currentTime: number | undefined = videoRef.current?.currentTime;
-        const duration: number | undefined = videoRef.current?.duration;
+	const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+		const video = e.target as HTMLVideoElement;
 
-        if (currentTime && duration) {
-            const progress: number = (currentTime / duration) * 100;
-            setProgress(progress);
-        }
+        const currentTime: number = video.currentTime;
+        const duration: number = video.duration;
+
+		const progress: number = (currentTime / duration) * 100;
+		setProgress(progress);
     };
 
-    const togglePlay = () => {
+    const togglePlay = async () => {
         const video = videoRef.current;
 		if (video) {
-			isPlaying ? video.pause() : video.play();
+			isPlaying ? video.pause() : await video.play();
 			setIsPlaying(prev => !prev);
 		}        
     };
@@ -38,12 +38,12 @@ const VideoWrapper: FC<IProps> = ({ src }) => {
 		};
 
 		const observer = new IntersectionObserver(entries => {
-			entries.forEach(entry => {
+			entries.forEach(async (entry) => {
 				if (
 					entry.isIntersecting &&
 					entry.target.hasAttribute("data-autoplay")
 				) {
-					(entry.target as HTMLVideoElement).play();
+					await (entry.target as HTMLVideoElement).play();
 					setIsPlaying(true);
 				} else {
 					(entry.target as HTMLVideoElement).pause();
