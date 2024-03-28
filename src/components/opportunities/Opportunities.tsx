@@ -50,8 +50,8 @@ const Opportunities: FC = () => {
                 const { top, bottom } = ref?.getBoundingClientRect() ?? { top: 0, bottom: 0 };
                 
                 if (
-                    top < ((windowHeight - 87) / 2 + 17) && 
-                    bottom > ((windowHeight - 87) / 2 + 157)
+                    top < ((windowHeight - 87) / 2 + 37) && 
+                    bottom > ((windowHeight - 87) / 2 + 127)
                 ) setCurrentOpportunity(i);
             });
         };
