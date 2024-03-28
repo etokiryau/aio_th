@@ -1,0 +1,179 @@
+@use '@/styles/_variables.module' as vars;
+@use '@/styles/_mixins.module' as mixins;
+
+.opportunities {
+    &__mobile {
+        display: none;
+    }
+
+    &__laptop {
+        margin-top: 112px;
+        margin-left: 10%;
+        display: flex;
+        padding-inline: 20px;
+        gap: 32px;
+        text-align: left;
+
+        &_position {
+            min-width: 2px;
+            min-height: 100%;
+            background-color: vars.$primaryColor02;
+
+            div {
+                position: sticky;
+                top: calc((100% - 87px - 160px) / 2 + 87px);
+                width: 100%;
+                height: 160px;
+                background-color: vars.$additionalColor;
+                z-index: 10;
+            }
+        }
+
+        &_list {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 145px;
+
+            .active {
+                opacity: 1;
+            }
+
+            &_single {
+                opacity: .4;
+                transition: .5s ease;
+                // scroll-snap-align: center;
+                // scroll-margin-top: 100px;
+
+                #name {
+                    font-size: 72px;
+                }
+
+                #description {
+                    margin-top: 40px;
+                }
+            }
+        }
+
+        &_media {
+            flex: 1;
+
+            &_content {
+                position: sticky;
+                top: calc((100% - 87px - 300px) / 2 + 87px);
+                // aspect-ratio: 16/9;
+                height: 300px;
+                border-radius: vars.$borderRadius;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .opportunities {
+        &__laptop {
+            margin-top: 100px;
+            margin-left: 0%;
+            padding-inline: 20px;
+
+            &_list {
+                &_single {
+                    #name {
+                        font-size: 52px;
+                    }
+                }
+            }
+
+            &_media {
+                &_content {
+                    min-height: 300px;
+                    height: 10vw;
+                    aspect-ratio: unset;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .opportunities {
+        &__laptop {
+            display: none;
+        }
+        
+        &__mobile {
+            display: block;
+            margin-top: 20px;
+            text-align: left;
+
+            &_list {
+                @include mixins.noScrollbar;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding-inline: 20px;
+                display: flex;
+                gap: 24px;
+                width: 100%;
+                max-height: min-content;
+                scroll-snap-type: x mandatory;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+
+                &_single {
+                    min-width: 90%;
+                    aspect-ratio: 16/9;
+                    min-height: 200px;
+                    scroll-snap-align: start;
+                    scroll-snap-stop: always;
+                    scroll-margin-left: 20px;
+                }
+            }
+
+            &_indexes {
+                margin-top: 20px;
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+
+                li {
+                    height: 2px;
+                    width: 20px;
+                    background-color: rgba($color: vars.$primaryColor, $alpha: .2);
+                    border-radius: 2px;
+                    transition: .3s ease;
+                }
+
+                .activeIndex {
+                    background-color: vars.$primaryColor;
+                }
+            }
+
+            &_info {
+                margin-top: 24px;
+                padding-inline: 20px;
+
+                &_up {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    gap: 20px;
+
+                    #name {
+                        padding-top: 4px;
+                        font-size: vars.$subHeaderMobileFontSize;
+                        font-weight: 400;
+                    }
+
+                    a {
+                        @include mixins.button;
+                    }
+                }
+
+                #description {
+                    margin-top: 16px;
+                    font-weight: 200;
+                }
+            }
+        }
+    }
+}

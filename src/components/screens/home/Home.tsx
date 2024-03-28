@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useState } from "react";
 
 import VideoWrapper from "@/components/videoWrapper/VideoWrapper";
 import MainLayout from "@/components/layouts/mainLayout/MainLayout";
@@ -8,49 +8,18 @@ import QuizForm from "@/components/quizForm/QuizForm";
 import LearnForm from "@/components/learnForm/LearnForm";
 import AdvantageBento2 from "@/components/ui/advantageBento2/AdvantageBento2";
 import ReasonGraph from "@/components/reasonGraph/ReasonGraph";
+import Opportunities from "@/components/opportunities/Opportunities";
 
 import styles from "./home.module.scss";
 
-interface IOpportunity {
-    name: string
-    description: string
-    src: string[]
-}
-
 const Home: FC = () => {
-    const [currentOpportunity, setCurrentOpportunity] = useState(0);
     const [isLearn, setIsLearn] = useState(false);
-    const opportunityRefs = useRef<HTMLLIElement[] | null[]>([]);
-    const opportunityMobileRefs = useRef<HTMLLIElement[] | null[]>([]);
-    const mobileOppListRef = useRef<HTMLUListElement>(null);
+
     const metadata = { 
         title: 'High-tech real estate in Thailand: houses and villas for investments and accommodations', 
         description: 'Lots of houses and villas in the best Thailand locations. Maximum detail of all projects, which are designed with own digital ecosystem. Unique real estate market offer from the developer, due to most effective and modern technologies allow to get 12% passive income 40% ROI in the first year.', 
         url: process.env.SITE_URL ?? '',
     };
-
-    const opportunitiesData: IOpportunity[] = [
-        {
-            name: 'Virtual tour',
-            description: 'Explore your favourite projects published in the catalogue in a realistic walk-through format online.',
-            src: ['/video/mainVideoEnscape.mp4'],
-        },
-        {
-            name: '3D project',
-            description: 'Explore the project in detail before you buy with an engineering 3D model in a handy viewing tool.',
-            src: ['/video/mainVideoAcquaintance.mp4'],
-        },
-        {
-            name: 'Digital documentation',
-            description: 'Get access to digital interactive documentation in your personal account immediately after purchasing a project.',
-            src: ['/video/mainVideoAnyDevice.mp4'],
-        },
-        {
-            name: 'Construction management',
-            description: 'Monitor the progress of your home construction without specialised knowledge online within our ecosystem.',
-            src: ['/video/mainVideoAccount.mp4'],
-        },
-    ];
 
     const slides = [
         { title: 'Project 1', src: '/img/project1.jpg' },
@@ -67,49 +36,7 @@ const Home: FC = () => {
         { title: 'Project 12', src: '/img/project12.jpg' },
     ];
 
-    useEffect(() => {
-        const windowHeight = window.innerHeight;
-        const windowWidth = window.innerWidth;
-        const ref = mobileOppListRef.current;
-
-        const handleScroll = () => {
-            opportunityRefs.current.forEach((ref, i) => {
-                const { top, bottom } = ref?.getBoundingClientRect() ?? { top: 0, bottom: 0 };
-                if (top < windowHeight / 2 - 80 && bottom > windowHeight / 2 + 80) setCurrentOpportunity(i);
-            });
-        };
-        window.addEventListener("scroll", handleScroll);
-
-        const handleMobileScroll = () => {
-            opportunityMobileRefs.current.forEach((ref, i) => {
-                const { left, right } = ref?.getBoundingClientRect() ?? { left: 0, right: 0 };
-                if (left < 200 && right < windowWidth) setCurrentOpportunity(i);
-            });
-        };
-        ref?.addEventListener("scroll", handleMobileScroll);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-            ref?.removeEventListener("scroll", handleMobileScroll);
-        };
-    }, []);
-
     const toggleForm = () => setIsLearn(prev => !prev);
-
-    const opportunitiesContent: JSX.Element[] = opportunitiesData.map((item, i) => {
-        return (
-            <li 
-                ref={ref => opportunityRefs.current[i] = ref} 
-                key={i} 
-                className={`${styles.home__opportunities_content_list_single}
-                    ${i === currentOpportunity ? styles.active : ''}
-                `}
-            >
-                <p id={styles.name}>{item.name}</p>
-                <p id={styles.description}>{item.description}</p>
-            </li>
-        );
-    });
 
     return (
         <MainLayout isPublic={true} {...metadata}>
@@ -138,51 +65,7 @@ const Home: FC = () => {
                 
                 <section className={styles.home__opportunities}>
                     <h2>Unique proprietary construction management platform</h2>
-                    <div className={styles.home__opportunities_content}>
-                        <div className={styles.home__opportunities_content_position}>
-                            <div />
-                        </div>
-                        <ul className={styles.home__opportunities_content_list}>
-                            {opportunitiesContent} 
-                        </ul>
-                        <div className={styles.home__opportunities_content_media}>
-                            <div className={styles.home__opportunities_content_media_content}>
-                                <VideoWrapper src={opportunitiesData[currentOpportunity].src} />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className={styles.home__opportunities_mobileContent}>
-                        <ul ref={mobileOppListRef} className={styles.home__opportunities_mobileContent_list}>
-                            {opportunitiesData.map((item, i) => {
-                                return (
-                                    <li 
-                                        key={i}
-                                        ref={ref => opportunityMobileRefs.current[i] = ref}
-                                        className={styles.home__opportunities_mobileContent_list_single}
-                                    >
-                                        <VideoWrapper src={item.src} />
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                        <ul className={styles.home__opportunities_mobileContent_indexes}>
-                            {opportunitiesData.map((_, i) => {
-                                return (
-                                    <li
-                                        key={i}
-                                        className={currentOpportunity === i ? styles.activeIndex : ''}
-                                    />
-                                );
-                            })}
-                        </ul>
-                        <div className={styles.home__opportunities_mobileContent_info}>
-                            <div className={styles.home__opportunities_mobileContent_info_up}>
-                                <p id={styles.name}>{opportunitiesData[currentOpportunity].name}</p>
-                            </div>
-                            <p id={styles.description}>{opportunitiesData[currentOpportunity].description}</p>
-                        </div>
-                    </div>
+                    <Opportunities />
                 </section>
 
                 <section className={styles.home__bento}>
