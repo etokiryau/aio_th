@@ -57,14 +57,9 @@
         }
     }
 
-    &__bento {
-        padding-inline: 20px;
-    }
-
     &__projects {
         &_slider {
             margin-top: 72px;
-            height: clamp(250px, 60vw, 60dvh);
         }
 
         &_learn {
@@ -131,13 +126,17 @@
 
 @media (max-width: 768px) {
     .home {
+        section:nth-child(n+3) {
+            margin-top: 72px;
+        }
+
         &__head {
             padding-bottom: 0;
             gap: 50px;
             height: auto;
 
             &_up {
-                padding: 40px 0 80px;
+                padding: 40px 0 100px;
                 height: calc(100lvh - 63px);
                 flex: unset;
 
@@ -157,6 +156,12 @@
 
         &__projects {
             &_slider {
+                margin-top: 42px;
+            }
+        }
+
+        &__reasons {
+            ul {
                 margin-top: 42px;
             }
         }

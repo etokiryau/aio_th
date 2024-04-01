@@ -7,7 +7,11 @@ import ImageWrapper from "../imageWrapper/ImageWrapper";
 import styles from "./carouselSlider.module.scss";
 
 type IProps = {
-	slides: { title: string; src: string }[];
+	slides: { 
+		src: string, date: string
+		area: number, floors: string
+		pool: string, design: string
+	}[];
 };
 
 const CarouselSlider: FC<IProps> = ({ slides }) => {
@@ -16,6 +20,8 @@ const CarouselSlider: FC<IProps> = ({ slides }) => {
 	const [popup, setPopup] = useState(false);
 	const slidesWrapperRef = useRef<HTMLUListElement>(null);
 	const slidesRef = useRef<(HTMLLIElement | null)[]>([]);
+
+	const popupSlides = slides.map(slide => slide.src);
 
 	const handleScroll = (): void => {
 		const windowWidth = window.innerWidth;
@@ -46,7 +52,7 @@ const CarouselSlider: FC<IProps> = ({ slides }) => {
 		setPopup(true);
 	};
 
-	const slidesContent = slides.map((item, i) => {
+	const slidesContent = slides.map((slide, i) => {
 		return (
 			<li ref={ref => slidesRef.current[i] = ref} key={i} 
 				className={`
@@ -57,11 +63,17 @@ const CarouselSlider: FC<IProps> = ({ slides }) => {
 				<button className={styles.slider__slideWrapper} onClick={togglePopup(i)}>
 					<ImageWrapper
 						quality={100}
-						src={item.src}
+						src={slide.src}
 						width={900} height={900} alt="render" draggable={false}
 					/>
 				</button>
-				<p>{item.title}</p>
+				<div className={styles.slider__info}>
+					<p><span>Date of construction:</span> {slide.date}</p>
+					<p><span>Total area of the villa:</span> {slide.area} m</p>
+					<p><span>Number of floors:</span> {slide.floors}</p>
+					<p><span>Design project:</span> {slide.design}</p>
+					<p><span>Pool availability:</span> {slide.pool}</p>
+				</div>
 			</li>
 		);
 	});
@@ -101,7 +113,7 @@ const CarouselSlider: FC<IProps> = ({ slides }) => {
 			{slides.length > 0 && 
 				<CarouselSliderPopup
 					size="small"
-					slides={slides} 
+					slides={popupSlides} 
 					state={[popup, setPopup]} 
 					slideToSet={popupSlideToSet}
 				/>

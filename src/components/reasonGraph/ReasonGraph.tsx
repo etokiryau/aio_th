@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 
 import ImageWrapper from "../imageWrapper/ImageWrapper";
 
@@ -7,13 +7,13 @@ import styles from "./reasonGraph.module.scss";
 interface IProps {
     xData: (string | number)[]
     yData: (string | number)[]
+    alt: string
     src: string
-    text: string
     yPadding: string
     imgHeight: number
 }
 
-const ReasonGraph: FC<IProps> = ({ xData, yData, src, text, yPadding, imgHeight }) => {
+const ReasonGraph: FC<PropsWithChildren<IProps>> = ({ xData, yData, src, alt, yPadding, imgHeight, children }) => {
 
     const xContent = xData.map((item, i) => <p key={i}>{item}</p>);
     const yContent = yData.map((item, i) => <p key={i}>{item}</p>);
@@ -24,7 +24,7 @@ const ReasonGraph: FC<IProps> = ({ xData, yData, src, text, yPadding, imgHeight 
                 <div className={styles.graph__main_left}>
                     <div className={styles.graph__main_left_wrapper}>
                         <div className={styles.graph__main_left_image}>
-                            <ImageWrapper src={src} alt={text} width={960} height={imgHeight} />
+                            <ImageWrapper src={src} alt={alt} width={960} height={imgHeight} />
                         </div>
                         
                         <div className={styles.graph__main_left_down}>
@@ -36,7 +36,7 @@ const ReasonGraph: FC<IProps> = ({ xData, yData, src, text, yPadding, imgHeight 
                     {yContent}
                 </div>
             </div>
-            <p className={styles.graph__text}>{text}</p>
+            <div className={styles.graph__text}>{children}</div>
         </div>
     );
 };

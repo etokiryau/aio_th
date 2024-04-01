@@ -125,6 +125,12 @@
 
 @media (max-width: 576px) {
     .quiz {
+        &__status {
+            &_bar {
+                width: 100%;
+            }
+        }
+        
         &__options {
             li {
                 width: 100%;

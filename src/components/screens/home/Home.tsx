@@ -6,7 +6,6 @@ import AdvatageCard from "@/components/ui/advantageCard/AdvantageCard";
 import CarouselSlider from "@/components/carouselSlider/CarouselSlider";
 import QuizForm from "@/components/quizForm/QuizForm";
 import LearnForm from "@/components/learnForm/LearnForm";
-import AdvantageBento2 from "@/components/ui/advantageBento2/AdvantageBento2";
 import ReasonGraph from "@/components/reasonGraph/ReasonGraph";
 import Opportunities from "@/components/opportunities/Opportunities";
 
@@ -22,18 +21,17 @@ const Home: FC = () => {
     };
 
     const slides = [
-        { title: 'Project 1', src: '/img/project1.jpg' },
-        { title: 'Project 2', src: '/img/project2.jpg' },
-        { title: 'Project 3', src: '/img/project3.jpg' },
-        { title: 'Project 4', src: '/img/project4.jpg' },
-        { title: 'Project 5', src: '/img/project5.jpg' },
-        { title: 'Project 6', src: '/img/project6.jpg' },
-        { title: 'Project 7', src: '/img/project7.jpg' },
-        { title: 'Project 8', src: '/img/project8.jpg' },
-        { title: 'Project 9', src: '/img/project9.jpg' },
-        { title: 'Project 10', src: '/img/project10.jpg' },
-        { title: 'Project 11', src: '/img/project11.jpg' },
-        { title: 'Project 12', src: '/img/project12.jpg' },
+        { src: '/img/project1.jpg', date: '3st quarter 2022', area: 370, floors: '2 floors', design: 'Individual minimalistic', pool: 'no pool' },
+        { src: '/img/project2.jpg', date: '1st quarter 2023', area: 190, floors: '1 floor', design: 'Individual', pool: 'with pool' },
+        { src: '/img/project3.jpg', date: '1st quarter 2023', area: 790, floors: '3 floors', design: 'Traditional Thailand', pool: 'with pool' },
+        { src: '/img/project4.jpg', date: '4st quarter 2023', area: 540, floors: '2 floors', design: 'Modern Thailand ', pool: 'with pool' },
+        { src: '/img/project5.jpg', date: '1st quarter 2022', area: 1100, floors: '2 floors', design: 'Individual Hi-Tech', pool: 'with pool' },
+        { src: '/img/project6.jpg', date: '4st quarter 2021', area: 590, floors: '2 floors', design: 'Individual', pool: 'no pool' },
+        { src: '/img/project7.jpg', date: '3st quarter 2023', area: 980, floors: '2 floors', design: 'Individual Hi-Tech', pool: 'with pool' },
+        { src: '/img/project8.jpg', date: '1st quarter 2022', area: 1200, floors: '2 floors', design: 'Individual Hi-Tech', pool: 'no pool' },
+        { src: '/img/project9.jpg', date: '2st quarter 2021', area: 480, floors: '2 floors', design: 'Modern European', pool: 'no pool' },
+        { src: '/img/project11.jpg', date: '4st quarter 2023', area: 1200, floors: '2 floors', design: 'Individual minimalistic', pool: 'no pool' },
+        { src: '/img/project12.jpg', date: '3st quarter 2023', area: 1000, floors: '3 floors', design: 'Modern Thailand', pool: 'with pool' },
     ];
 
     const toggleForm = () => setIsLearn(prev => !prev);
@@ -68,10 +66,6 @@ const Home: FC = () => {
                     <Opportunities />
                 </section>
 
-                <section className={styles.home__bento}>
-                    <AdvantageBento2 />
-                </section>
-
                 <section className={styles.home__projects}>
                     <h2>Released projects</h2>
                     <div className={styles.home__projects_slider}>
@@ -91,9 +85,16 @@ const Home: FC = () => {
                                 yData={[30, 34, 38]}
                                 src="/img/graph1.png"
                                 imgHeight={490}
-                                text="Thai baht to US dollar exchange rate"
+                                alt="Thai baht to US dollar exchange rate"
                                 yPadding="10px 0 50px"
-                            />
+                            >
+                                <p>
+                                    Thailand&apos;s official currency, the baht, has demonstrated <span>strong</span> {" "}
+                                    stability for a currency in a developing country. From the beginning of {" "}
+                                    <span>2000</span> to <span>2023</span>, the baht strengthened against the US dollar 
+                                    by <span>6.9%</span>.
+                                </p>
+                            </ReasonGraph>
                         </li>
 
                         <li>
@@ -102,9 +103,16 @@ const Home: FC = () => {
                                 yData={[104, 130, 156]}
                                 src="/img/graph2.png"
                                 imgHeight={315}
-                                text="House price index"
+                                alt="The housing price index"
                                 yPadding="10px 0 30px"
-                            />
+                            >
+                                <p>
+                                    The housing price index, which is calculated from the cost of a single villa with a 
+                                    yard, has shown <span>stable growth</span> since the beginning of observation,
+                                    confirming the <span>reliability and prospects of investing</span> in real estate 
+                                    in Thailand.
+                                </p>
+                            </ReasonGraph>
                         </li>
 
                         <li>
@@ -113,9 +121,15 @@ const Home: FC = () => {
                                 yData={[160, 330, 500]}
                                 src="/img/graph3.png"
                                 imgHeight={376}
-                                text="Thailand GDP graph (USD billion)"
+                                alt="Thailand GDP graph (USD billion)"
                                 yPadding="10px 0 50px"
-                            />
+                            >
+                                <p>
+                                    Thailand GDP graph (USD billion). Over the past <span>four decades</span>. Thailand 
+                                    has made <span>remarkable</span> progress in economic development. Thailand&apos;s 
+                                    economy ranks second in the region and shows steady growth.
+                                </p>
+                            </ReasonGraph>
                         </li>
                     </ul>
                 </section>

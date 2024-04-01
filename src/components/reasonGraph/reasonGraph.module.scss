@@ -49,6 +49,10 @@
         font-size: 22px;
         width: min(100%, 250px);
         text-align: center;
+
+        span {
+            font-weight: 400;
+        }
     }
 }
 
@@ -63,6 +67,7 @@
         &__text {
             margin-top: 10px;
             width: unset;
+            font-size: 16px;
         }
     }
 }

@@ -8,7 +8,7 @@ import ImageWrapper from "../imageWrapper/ImageWrapper";
 import styles from "./carouselSliderPopup.module.scss";
 
 type IProps = {
-	slides: string[] | { title: string; src: string }[];
+	slides: string[];
 	state: [boolean, React.Dispatch<React.SetStateAction<boolean>>],
 	slideToSet: number;
 	size?: 'large' | 'small'
@@ -70,19 +70,11 @@ const CarouselSliderPopup: FC<IProps> = ({ slides, state, slideToSet, size = 'la
 				ref={ref => popupSlidesRef.current[i] = ref}
 				className={styles.popup__content_slide}
 			>
-				{typeof item === "string" ? (
-					<ImageWrapper
-						quality={100}
-						src={item}
-						width={900} height={900} alt="render" draggable={false}
-					/>
-				) : (
-					<ImageWrapper
-						quality={100}
-						src={item?.src}
-						width={900} height={900} alt="render" draggable={false}
-					/>
-				)}
+				<ImageWrapper
+					quality={100}
+					src={item}
+					width={900} height={900} alt="render" draggable={false}
+				/>
 			</li>
 		);
 	});

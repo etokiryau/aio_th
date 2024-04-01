@@ -14,7 +14,6 @@
         object-position: center;
         transition: .3s ease;
         opacity: 0;
-        transform: scale(.9);
     }
 
     .contain {
@@ -39,7 +38,6 @@
 
     img {
         opacity: 1;
-        transform: none;
     }
 }
 

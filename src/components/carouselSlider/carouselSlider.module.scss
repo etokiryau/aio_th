@@ -3,7 +3,6 @@
 
 .slider {
     position: relative;
-    height: 100%;
 
     img {
         -webkit-user-drag: none;
@@ -15,13 +14,13 @@
         overflow-y: hidden;
         display: flex;
         gap: 8.5%;
-        height: 100%;
+        // height: 100%;
         scroll-snap-type: x mandatory;
 
         &::before {
             content: '';
             min-width: 10.25%;
-            height: calc(100% - 42px);
+            height: clamp(300px, calc(100dvh - 450px), 700px);
             background-color: rgba($color: vars.$primaryColor, $alpha: .1);
             border-radius: 0 vars.$borderRadius vars.$borderRadius 0;
         }
@@ -29,16 +28,26 @@
         &::after {
             content: '';
             min-width: 10.25%;
-            height: calc(100% - 42px);
+            height: clamp(300px, calc(100dvh - 450px), 700px);
             background-color: rgba($color: vars.$primaryColor, $alpha: .1);
             border-radius: vars.$borderRadius 0 0 vars.$borderRadius;
         }
     }
 
+    &__slide {
+        min-width: 62.5%;
+        // height: calc(100% - 42px);
+        transition: .9s ease;
+        // user-select: none;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+
     &__slideWrapper {
+        flex: 1;
         overflow: hidden;
         width: 100%;
-        height: 100%;
+        height: clamp(300px, calc(100dvh - 450px), 700px);
         border-radius: vars.$borderRadius;
         cursor: zoom-in;
 
@@ -47,17 +56,21 @@
         }
     }
 
-    &__slide {
-        min-width: 62.5%;
-        height: calc(100% - 42px);
-        transition: .9s ease;
-        // user-select: none;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
-
+    &__info {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: 1fr;
+        
         p {
-            margin: 18px 0 0 10px;
-            text-align: center;
+            span {
+                font-weight: 400;
+            }
+
+            &:nth-child(2) {
+                &::after {
+                    content: '\00B2'
+                }
+            }
         }
     }
 
@@ -68,7 +81,7 @@
     &__rightChange, &__leftChange {
         @include mixins.flexCenter;
         position: absolute;
-        top: calc((100% - 42px) / 2);
+        top: calc((100% - 125px) / 2);
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -104,44 +117,27 @@
 
 @media (max-width: 768px) {
     .slider {
-        height: calc(100% - 26px);
-
-        .smallWrapper {
-            gap: 8.5%;
-
-            &::before, &::after {
-                min-width: 10.25%;
-                height: 100%;
-            }
-        }
-
         .inActive {
             opacity: unset;
         }
 
         &__slideWrapper {
             border-radius: vars.$mobileBorderRadius;
+            height: clamp(150px, 40dvw, 700px);
         }
 
         &__wrapper {
             &::before {
                 border-radius: 0 vars.$mobileBorderRadius vars.$mobileBorderRadius 0;
+                height: clamp(150px, 40dvw, 700px);
             }
     
             &::after {
                 border-radius: vars.$mobileBorderRadius 0 0 vars.$mobileBorderRadius;
+                height: clamp(150px, 40dvw, 700px);
             }
 
             &_blank {
-                display: none;
-            }
-        }
-
-        &__slideSmall {
-            min-width: 62.5%;
-            height: 100%;
-
-            p {
                 display: none;
             }
         }
@@ -167,6 +163,14 @@
             .activeDot {
                 background-color: vars.$primaryColor;
             }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .slider {
+        &__info {
+            font-size: 14px;
         }
     }
 }
