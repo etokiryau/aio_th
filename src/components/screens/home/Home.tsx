@@ -8,6 +8,7 @@ import QuizForm from "@/components/quizForm/QuizForm";
 import LearnForm from "@/components/learnForm/LearnForm";
 import ReasonGraph from "@/components/reasonGraph/ReasonGraph";
 import Opportunities from "@/components/opportunities/Opportunities";
+import ImageWrapper from "@/components/imageWrapper/ImageWrapper";
 
 import styles from "./home.module.scss";
 
@@ -41,7 +42,38 @@ const Home: FC = () => {
             <div className={styles.home}>
                 <LearnForm state={[isLearn, setIsLearn]} />
 
-                <section className={styles.home__head}>
+                <section className={styles.home__info}>
+                    <div className={styles.home__info_wrapper}>
+                        <ImageWrapper src="/img/project6.jpg" alt="" width={900} height={900} />
+
+                        <h1>Buy a villa in Thailand</h1>
+
+                        <div className={styles.home__info_bottom}>
+                            <button type="button" onClick={toggleForm}>Learn more</button>
+
+                            <div className={styles.home__info_bottom_props}>
+                                <div className={styles.home__info_bottom_props_single}>
+                                    <p className={styles.home__info_bottom_props_single_value}>40%</p>
+                                    <p>ROI in year one</p>
+                                </div>
+                                <div className={styles.home__info_bottom_props_single}>
+                                    <p className={styles.home__info_bottom_props_single_value}>12%</p>
+                                    <p>Passive income</p>
+                                </div>
+                                <div className={styles.home__info_bottom_props_single}>
+                                    <p className={styles.home__info_bottom_props_single_value}>32%</p>
+                                    <p>Cost reduction</p>
+                                </div>
+                                <div className={styles.home__info_bottom_props_single}>
+                                    <p className={styles.home__info_bottom_props_single_value}>100%</p>
+                                    <p>Process transparency</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* <section className={styles.home__head}>
                     <div className={styles.home__head_up}>
                         <div className={styles.home__head_up_left}>
                             <h1>Buy a villa in Thailand</h1>
@@ -59,7 +91,7 @@ const Home: FC = () => {
                         <AdvatageCard value="32%" description="Cost reduction" />
                         <AdvatageCard value="100%" description="Process transparency" />
                     </div>
-                </section>
+                </section> */}
                 
                 <section className={styles.home__opportunities}>
                     <h2>Unique proprietary construction management platform</h2>

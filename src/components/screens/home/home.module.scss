@@ -14,6 +14,67 @@
         padding-inline: 20px;
     }
 
+    &__info {
+        margin-top: 25px;
+        padding-inline: 20px;
+
+        &_wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: vars.$borderRadius;
+            height: min(calc(100dvh - 137px), 900px);
+            border: solid 1px rgba($color: vars.$primaryColor, $alpha: .1);
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: vars.$secondaryColor;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        &_bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+            width: 100%;
+
+            button {
+                @include mixins.whiteButton;
+            }
+
+            &_props {
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                background-color: vars.$secondaryColor;
+                border-radius: vars.$borderRadius vars.$borderRadius 0 0;
+    
+                &_single {
+                    padding-inline: 20px;
+                    text-align: center;
+    
+                    &_value {
+                        font-size: vars.$subHeaderFontSize;
+                        color: vars.$additionalColor;
+                    }
+    
+                    &:nth-child(n+2) {
+                        border-left: solid 1px rgba($color: vars.$primaryColor, $alpha: .6);
+                    }
+                }
+            }
+        }
+    }
+
     &__head {
         @include mixins.flexColumn;
         padding-inline: 20px;
@@ -128,6 +189,51 @@
     .home {
         section:nth-child(n+3) {
             margin-top: 72px;
+        }
+
+        &__info {
+            h1 {
+                white-space: unset;
+                width: calc(100% - 20px);
+            }
+    
+            &_bottom {
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 20px;
+                flex-direction: column-reverse;
+                align-items: center;
+                gap: 30px;
+                width: min(calc(100% - 20px), 300px);
+                border-radius: vars.$borderRadius;
+                background-color: vars.$secondaryColor;
+    
+                button {
+                    @include mixins.button;
+                }
+    
+                &_props {
+                    padding: unset;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 20px;
+                    width: unset;
+                    background-color: unset;
+        
+                    &_single {
+                        padding-inline: unset;
+        
+                        &_value {
+                            font-size: 24px;
+                        }
+        
+                        &:nth-child(n+2) {
+                            border-left: unset;
+                        }
+                    }
+                }
+            }
         }
 
         &__head {

@@ -16,6 +16,26 @@ const Thanks: FC = () => {
                 <meta name="og:title" content="Thank you for application submition" />
                 <meta property="og:site_name" content="AIO" />
             </Head>
+            <Script id="pixel" strategy="lazyOnload">
+                {`
+                    !function(f,b,e,v,n,t,s)
+                    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    n.queue=[];t=b.createElement(e);t.async=!0;
+                    t.src=v;s=b.getElementsByTagName(e)[0];
+                    s.parentNode.insertBefore(t,s)}(window, document,'script',
+                    'https://connect.facebook.net/en_US/fbevents.js');
+                    fbq('init', '1090830305464780');
+                    fbq('track', 'PageView');
+                `}
+            </Script>
+            <noscript>
+                <img height="1" width="1" style={{ display: 'none' }}
+                src="https://www.facebook.com/tr?id=1090830305464780&ev=PageView&noscript=1"
+                />
+            </noscript>
+
             <div className={styles.thanks}>
                 <div className={styles.thanks__wrapper}>
                     <SuccessIcon />
