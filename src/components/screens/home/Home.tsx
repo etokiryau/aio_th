@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 
-import VideoWrapper from "@/components/videoWrapper/VideoWrapper";
+// import VideoWrapper from "@/components/videoWrapper/VideoWrapper";
 import MainLayout from "@/components/layouts/mainLayout/MainLayout";
-import AdvatageCard from "@/components/ui/advantageCard/AdvantageCard";
+// import AdvatageCard from "@/components/ui/advantageCard/AdvantageCard";
 import CarouselSlider from "@/components/carouselSlider/CarouselSlider";
 import QuizForm from "@/components/quizForm/QuizForm";
 import LearnForm from "@/components/learnForm/LearnForm";
@@ -66,7 +66,8 @@ const Home: FC = () => {
                                 </div>
                                 <div className={styles.home__info_bottom_props_single}>
                                     <p className={styles.home__info_bottom_props_single_value}>100%</p>
-                                    <p>Process transparency</p>
+                                    <p className={styles.full}>Process transparency</p>
+                                    <p className={styles.short}>Transparency</p>
                                 </div>
                             </div>
                         </div>
@@ -113,14 +114,13 @@ const Home: FC = () => {
                     <ul>
                         <li>
                             <ReasonGraph 
-                                xData={['2015', '2016', '2018', '2019', '2020', '2021', '2022', '2023', '2024']}
-                                yData={[30, 34, 38]}
+                                xData={['2015', '2020', '2024']}
                                 src="/img/graph1.png"
                                 imgHeight={490}
                                 alt="Thai baht to US dollar exchange rate"
-                                yPadding="10px 0 50px"
                             >
                                 <p>
+                                    <span>Thai baht to US dollar exchange rate.</span> <br/> <br/>
                                     Thailand&apos;s official currency, the baht, has demonstrated <span>strong</span> {" "}
                                     stability for a currency in a developing country. From the beginning of {" "}
                                     <span>2000</span> to <span>2023</span>, the baht strengthened against the US dollar 
@@ -132,14 +132,13 @@ const Home: FC = () => {
                         <li>
                             <ReasonGraph 
                                 xData={['2011', '2016', '2021']}
-                                yData={[104, 130, 156]}
                                 src="/img/graph2.png"
                                 imgHeight={315}
                                 alt="The housing price index"
-                                yPadding="10px 0 30px"
                             >
                                 <p>
-                                    The housing price index, which is calculated from the cost of a single villa with a 
+                                    <span>The housing price index.</span> <br/> <br/> 
+                                    It is calculated from the cost of a single villa with a 
                                     yard, has shown <span>stable growth</span> since the beginning of observation,
                                     confirming the <span>reliability and prospects of investing</span> in real estate 
                                     in Thailand.
@@ -149,14 +148,13 @@ const Home: FC = () => {
 
                         <li>
                             <ReasonGraph 
-                                xData={['1999', '2007', '2015', '2023']}
-                                yData={[160, 330, 500]}
+                                xData={['1999', '2011', '2023']}
                                 src="/img/graph3.png"
                                 imgHeight={376}
                                 alt="Thailand GDP graph (USD billion)"
-                                yPadding="10px 0 50px"
                             >
                                 <p>
+                                    <span>Thailand GDP graph (USD billion).</span> <br/> <br/> 
                                     Thailand GDP graph (USD billion). Over the past <span>four decades</span>. Thailand 
                                     has made <span>remarkable</span> progress in economic development. Thailand&apos;s 
                                     economy ranks second in the region and shows steady growth.

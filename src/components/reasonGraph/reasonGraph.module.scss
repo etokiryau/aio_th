@@ -6,49 +6,35 @@
     gap: 30px;
 
     &__main {
+        width: 100%;
         padding: 15px;
-        display: flex;
-        gap: 10px;
-        width: min(100%, 800px);
-        height: 360px;
+        width: min(100%, 750px);
+        height: 380px;
         box-shadow: vars.$boxShadow;
         border-radius: vars.$borderRadius;
         font-size: 14px;
 
-        &_left {
+        &_wrapper {
             @include mixins.scrollbar;
-            overflow-x: scroll;
-            padding-bottom: 10px;
-            width: 100%;
-
-            &_wrapper {
-                width: max(100%, 600px);
-                height: 100%;
-            }
-
-            &_image {
-                width: 100%;
-                height: calc(100% - 17px);
-            }
-
-            &_down {
-                display: flex;
-                justify-content: space-between;
-            }
+            overflow-x: auto;
+            height: 100%;
         }
 
-        &_right {
-            padding: 10px 0 50px;
+        &_image {
+            width: max(100%, 600px);
+            height: calc(100% - 17px);
+        }
+
+        &_down {
             display: flex;
-            flex-direction: column-reverse;
             justify-content: space-between;
+            width: max(100%, 600px);
         }
     }
 
     &__text {
         font-size: 22px;
         width: min(100%, 250px);
-        text-align: center;
 
         span {
             font-weight: 400;
