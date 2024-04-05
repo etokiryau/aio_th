@@ -25,17 +25,17 @@ const Opportunities: FC = () => {
         {
             name: '3D project',
             description: 'Explore the project in detail before you buy with an engineering 3D model in a handy viewing tool.',
-            src: ['/video/mainVideoAcquaintance.mp4'],
+            src: ['/video/advantagesDesign2.mp4'],
         },
         {
             name: 'Digital documentation',
             description: 'Get access to digital interactive documentation in your personal account immediately after purchasing a project.',
-            src: ['/video/mainVideoAnyDevice.mp4'],
+            src: ['/video/advantagesDesign1.mp4'],
         },
         {
             name: 'Construction management',
             description: 'Monitor the progress of your home construction without specialised knowledge online within our ecosystem.',
-            src: ['/video/mainVideoAccount.mp4'],
+            src: ['/video/advantagesConstruction1.mp4'],
         },
     ];
 

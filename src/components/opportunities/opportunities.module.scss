@@ -33,7 +33,7 @@
             display: flex;
             flex-direction: column;
             flex: 1;
-            gap: 145px;
+            gap: 185px;
 
             .active {
                 opacity: 1;
@@ -47,6 +47,8 @@
 
                 #name {
                     font-size: 72px;
+                    word-break: break-word;
+                    hyphens: auto;
                 }
 
                 #description {
@@ -60,9 +62,9 @@
 
             &_content {
                 position: sticky;
-                top: calc((100% - 87px - 300px) / 2 + 87px);
-                // aspect-ratio: 16/9;
-                height: 300px;
+                top: calc((100% - 87px - 330px) / 2 + 87px);
+                width: 497px;
+                height: 330px;
                 border-radius: vars.$borderRadius;
             }
         }
@@ -83,12 +85,18 @@
                     }
                 }
             }
+        }
+    }
+}
 
+@media (max-width: 991px) {
+    .opportunities {
+        &__laptop {
             &_media {
                 &_content {
-                    min-height: 300px;
-                    height: 10vw;
-                    aspect-ratio: unset;
+                    top: calc((100% - 87px - 220px) / 2 + 87px);
+                    width: 332px;
+                    height: 220px;
                 }
             }
         }
@@ -121,7 +129,7 @@
 
                 &_single {
                     min-width: 90%;
-                    aspect-ratio: 16/9;
+                    aspect-ratio: 3/2;
                     min-height: 200px;
                     scroll-snap-align: start;
                     scroll-snap-stop: always;
