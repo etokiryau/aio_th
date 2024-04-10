@@ -20,22 +20,22 @@ const Opportunities: FC = () => {
         {
             name: 'Virtual tour',
             description: 'Explore your favourite projects published in the catalogue in a realistic walk-through format online.',
-            src: ['/video/mainVideoEnscape.mp4'],
+            src: ['https://s3.eu-west-3.amazonaws.com/aio.storage/mainVideoEnscape.mp4'],
         },
         {
             name: '3D project',
             description: 'Explore the project in detail before you buy with an engineering 3D model in a handy viewing tool.',
-            src: ['/video/advantagesDesign2.mp4'],
+            src: ['https://s3.eu-west-3.amazonaws.com/aio.storage/advantagesDesign2.mp4'],
         },
         {
             name: 'Digital documentation',
             description: 'Get access to digital interactive documentation in your personal account immediately after purchasing a project.',
-            src: ['/video/advantagesDesign1.mp4'],
+            src: ['https://s3.eu-west-3.amazonaws.com/aio.storage/advantagesDesign1.mp4'],
         },
         {
             name: 'Construction management',
             description: 'Monitor the progress of your home construction without specialised knowledge online within our ecosystem.',
-            src: ['/video/advantagesConstruction1.mp4'],
+            src: ['https://s3.eu-west-3.amazonaws.com/aio.storage/advantagesConstruction1.mp4'],
         },
     ];
 
