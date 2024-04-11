@@ -35,7 +35,7 @@ const Opportunities: FC = () => {
         {
             name: 'Construction management',
             description: 'Monitor the progress of your home construction without specialised knowledge online within our ecosystem.',
-            src: ['https://s3.eu-west-3.amazonaws.com/aio.storage/advantagesConstruction1.mp4'],
+            src: ['https://s3.eu-west-3.amazonaws.com/aio.storage/advantagesConstruction2.mp4'],
         },
     ];
 
